@@ -1,10 +1,12 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import App from "./App";
+import ContactForm from "./components/ContactForm";
 import { act } from "react-dom/test-utils";
 
 test("User can submit form with all inputs", async () => {
-  render(<App />);
+  act(()=>{
+    render(<ContactForm />);
+  })
 
   const firstNameInput = screen.getByPlaceholderText(/edd/i);
   const lastNameInput = screen.getByPlaceholderText(/burke/i);
@@ -25,10 +27,6 @@ test("User can submit form with all inputs", async () => {
     //these tests are not working
     const successMessage = await screen.findByTestId('result');
     expect(successMessage).toBeInTheDocument();
-
-    console.log(successMessage)
-
-    // console.log(successMessage);
 });
 
 
